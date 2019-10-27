@@ -62,6 +62,14 @@ sprites_list = pygame.sprite.Group()
 player = Player(400,400)
 sprites_list.add(player)
 
+pygame.mixer.init()
+pygame.mixer.music.load("Sounds\\" + 'map_move.mp3')
+pygame.mixer.music.play(-1)
+
+move_sound = pygame.mixer.Sound("Sounds\\" + 'snap-719669812.wav')
+level_complete = pygame.mixer.Sound(
+    "Sounds\\" + 'Electronic_Chime-495939803.wav')
+
 gameRunning = True
 is_moving = False
 clock = pygame.time.Clock()
@@ -74,12 +82,16 @@ while gameRunning:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 player.move(-MOVE_DISTANCE, 0)
+                move_sound.play()
             elif event.key == pygame.K_RIGHT:
                 player.move(MOVE_DISTANCE, 0)
+                move_sound.play()
             elif event.key == pygame.K_UP:
                 player.move(0, -MOVE_DISTANCE)
+                move_sound.play()
             elif event.key == pygame.K_DOWN:
                 player.move(0, MOVE_DISTANCE)
+                move_sound.play()
             
             pygame.time.delay(100)
  
