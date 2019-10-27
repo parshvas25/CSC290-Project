@@ -125,11 +125,18 @@ Load the images of the box and the character
 """
 
 box_non = pg.image.load('box.png')
+# This scales the box image to meet dimensions
+
 box = pg.transform.scale(box_non, (40, 40))
+
 pressure_plate = pg.image.load('pressure.png')
+# This scales the pressure plate to meet dimensions
 pressure_image = pg.transform.scale(pressure_plate, (15, 15))
+
 player_image = pg.image.load('character.png')
+# This scales the player image to meet dimensions
 player = pg.transform.scale(player_image, (60, 60))
+
 gameDisplay.blit(player, (350, 70))
 gameDisplay.blit(pressure_image, (120, 240))
 gameDisplay.blit(box, (450, 450))
