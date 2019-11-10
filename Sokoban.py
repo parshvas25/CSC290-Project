@@ -64,7 +64,7 @@ player = Player(400,400)
 sprites_list.add(player)
 
 gameRunning = True
-is_moving = False
+isMoving = False
 clock = pygame.time.Clock()
 
 while gameRunning:
@@ -73,22 +73,24 @@ while gameRunning:
             gameRunning = False
 
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                player.move(-MOVE_DISTANCE, 0)
-            elif event.key == pygame.K_RIGHT:
-                player.move(MOVE_DISTANCE, 0)
-            elif event.key == pygame.K_UP:
-                player.move(0, -MOVE_DISTANCE)
-            elif event.key == pygame.K_DOWN:
-                player.move(0, MOVE_DISTANCE)
-            
-            pygame.time.delay(100)
- 
-
+            if not isMoving:
+                isMoving = True
+                if event.key == pygame.K_LEFT:
+                    player.move(-MOVE_DISTANCE, 0)
+                elif event.key == pygame.K_RIGHT:
+                    player.move(MOVE_DISTANCE, 0)
+                elif event.key == pygame.K_UP:
+                    player.move(0, -MOVE_DISTANCE)
+                elif event.key == pygame.K_DOWN:
+                    player.move(0, MOVE_DISTANCE)
+                
     sprites_list.update()
     screen.fill(BLACK)
     sprites_list.draw(screen) 
     pygame.display.flip() 
+    if(isMoving):
+        pygame.time.delay(100)
+        isMoving = False
 
 pygame.quit()
 quit()
