@@ -13,7 +13,7 @@ SCREEN_HEIGHT = 700
 MOVE_DISTANCE = 50
 
 def get_sprite(sprite_name):
-    image = pygame.image.load("Images\\" +sprite_name)
+    image = pygame.image.load("Images/" +sprite_name)
     return image
 
 class Player(pygame.sprite.Sprite):
@@ -21,18 +21,11 @@ class Player(pygame.sprite.Sprite):
     #Construct the player class
     def __init__(self, x, y):
         super().__init__()
-<<<<<<< HEAD
 
         # TODO: CHANGE BASE RECTANGLE CHARACTER TO SPRITE
         self.image = get_sprite("character.png")
 
 
-=======
- 
-        # Sets the player movement to the sprite png 
-        self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
- 
->>>>>>> 281290dbdec61e26fe086543e7c9e586b9d796a4
         # Set the top left position of the location to the x,y coordinate passed in
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -54,10 +47,6 @@ class Player(pygame.sprite.Sprite):
             self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 281290dbdec61e26fe086543e7c9e586b9d796a4
     def update(self):
         """Used to update the players position"""
         self.rect.x += self.dir_x
@@ -65,18 +54,23 @@ class Player(pygame.sprite.Sprite):
 
         self.dir_x = 0
         self.dir_y = 0
-        
 
+# This class is responsible for creating the Box Boundaries for each level
 class Box(pygame.sprite.Sprite):
     def __init__(self, x, y):
-        this.image = pygame.image.load("Sprites/brick.jpg")
-        this.x = x
-        this.y = y
-    def blit():
-        screen.blit(this.image,x, y )
+        self.image = pygame.image.load("Images/brick.png")
+        self.x = x
+        self.y = y
+    def appear(self):
+        brick_image = pygame.transform.scale(self.image, (40, 40))
+        screen.blit(brick_image,(self.x,self.y))
+
+# This nested array is responsible for representing each level as a set of coor-
+#dinate values the box will be appear on the screan
+levels = [[[0,0], [30,0], [60,0]]]
 
 
-        
+
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Sokoban")
@@ -89,7 +83,10 @@ gameRunning = True
 isMoving = False
 clock = pygame.time.Clock()
 
+current_level = 1
+
 while gameRunning:
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameRunning = False
@@ -105,20 +102,16 @@ while gameRunning:
                     player.move(0, -MOVE_DISTANCE)
                 elif event.key == pygame.K_DOWN:
                     player.move(0, MOVE_DISTANCE)
-                
+
     sprites_list.update()
-<<<<<<< HEAD
+
+    screen.fill(BLACK)
     sprites_list.draw(screen)
     pygame.display.flip()
-    clock.tick(60)
-=======
-    screen.fill(BLACK)
-    sprites_list.draw(screen) 
-    pygame.display.flip() 
     if(isMoving):
         pygame.time.delay(100)
         isMoving = False
->>>>>>> 281290dbdec61e26fe086543e7c9e586b9d796a4
+
 
 pygame.quit()
 quit()
