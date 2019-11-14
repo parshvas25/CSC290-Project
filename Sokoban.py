@@ -1,6 +1,7 @@
 import pygame
 from pygame import *
 
+
 # Global constants
 
 # Colors
@@ -85,33 +86,78 @@ clock = pygame.time.Clock()
 
 current_level = 1
 
-while gameRunning:
+#Create a dictionary of colors to be used in the menu
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            gameRunning = False
+color_dict = {"black": (0,0,0), "yellow": (255,255,0), "green": (0,255,0)}
 
-        elif event.type == pygame.KEYDOWN:
-            if not isMoving:
-                isMoving = True
-                if event.key == pygame.K_LEFT:
-                    player.move(-MOVE_DISTANCE, 0)
-                elif event.key == pygame.K_RIGHT:
-                    player.move(MOVE_DISTANCE, 0)
-                elif event.key == pygame.K_UP:
-                    player.move(0, -MOVE_DISTANCE)
-                elif event.key == pygame.K_DOWN:
-                    player.move(0, MOVE_DISTANCE)
+background_image = pygame.image.load("menu/background.jpg")
+bg = pygame.transform.scale(background_image, (SCREEN_WIDTH,SCREEN_HEIGHT))
 
-    sprites_list.update()
+#Import Forque Font
+forque = "menu/Forque.ttf"
 
-    screen.fill(BLACK)
-    sprites_list.draw(screen)
-    pygame.display.flip()
-    if(isMoving):
-        pygame.time.delay(100)
-        isMoving = False
+#Create Function that can adjust the game font
 
+def game_font(text:str, font:str, size:int, textColor:tuple):
+    return pygame.font.Font(font, size).render(text, 0, textColor)
+
+
+def main():
+
+    running = True
+    current = "Start"
+    while running:
+        screen.blit(bg, (0,0))
+        sokoban_title = game_font("Sokoban", forque, 100, color_dict["yellow"])
+        start = game_font("Start", forque, 75, color_dict["green"])
+        screen.blit(sokoban_title, (SCREEN_WIDTH/2 - 150, 100))
+        screen.blit(start, (SCREEN_WIDTH/2 - 90, 300))
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                pygame.quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    run_game()
+                
+        pygame.display.update()
+
+
+#
+
+def run_game():
+    gameRunning = True
+    isMoving = False
+    clock = pygame.time.Clock()
+    while gameRunning:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                gameRunning = False
+
+            elif event.type == pygame.KEYDOWN:
+                if not isMoving:
+                    isMoving = True
+                    if event.key == pygame.K_LEFT:
+                        player.move(-MOVE_DISTANCE, 0)
+                    elif event.key == pygame.K_RIGHT:
+                        player.move(MOVE_DISTANCE, 0)
+                    elif event.key == pygame.K_UP:
+                        player.move(0, -MOVE_DISTANCE)
+                    elif event.key == pygame.K_DOWN:
+                        player.move(0, MOVE_DISTANCE)
+
+        sprites_list.update()
+
+        screen.fill(BLACK)
+        sprites_list.draw(screen)
+        pygame.display.flip()
+        if(isMoving):
+            pygame.time.delay(100)
+            isMoving = False
+
+
+
+main()
 
 pygame.quit()
 quit()
