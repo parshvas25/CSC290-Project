@@ -23,7 +23,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         # TODO: CHANGE BASE RECTANGLE CHARACTER TO SPRITE
-        self.image = get_sprite("character.png")
+        self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
 
 
         # Set the top left position of the location to the x,y coordinate passed in
