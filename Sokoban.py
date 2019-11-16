@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         # TODO: CHANGE BASE RECTANGLE CHARACTER TO SPRITE
-        self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
+        self.image = pygame.transform.scale(get_sprite("player-left.png"),(60,60))
 
 
         # Set the top left position of the location to the x,y coordinate passed in
@@ -43,9 +43,9 @@ class Player(pygame.sprite.Sprite):
 
     def change_sprite(self):
         if self.dir_x > 0:
-            self.image = pygame.transform.scale(get_sprite("character-right.png"),(60,60))
+            self.image = pygame.transform.scale(get_sprite("player-right.png"),(60,60))
         elif self.dir_x < 0:
-            self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
+            self.image = pygame.transform.scale(get_sprite("player-left.png"),(60,60))
 
 
     def update(self):
@@ -59,7 +59,7 @@ class Player(pygame.sprite.Sprite):
 # This class is responsible for creating the Box Boundaries for each level
 class Box(pygame.sprite.Sprite):
     def __init__(self, x, y):
-        self.image = pygame.image.load("Images/brick.png")
+        self.image = pygame.image.load("Images/wall.png")
         self.x = x
         self.y = y
     def appear(self):
@@ -118,7 +118,7 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     run_game()
-                
+
         pygame.display.update()
 
 
