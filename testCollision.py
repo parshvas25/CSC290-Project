@@ -53,7 +53,7 @@ class Player(pygame.sprite.Sprite):
         elif self.dir_x < 0:
             self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
 
-    def update(self, walls):
+    def update(self, walls, crates):
         """Used to update the players position"""
         old_x = self.rect.x
         old_y = self.rect.y
@@ -62,46 +62,66 @@ class Player(pygame.sprite.Sprite):
 
         # Check if we collided with something
         for wall in walls:
-            if pygame.sprite.spritecollide(self, wall):
+            if self.rect.colliderect(wall.rect):
                 self.rect.x=old_x
                 self.rect.y=old_y
 
+        for crate in crates:
+            if self.rect.colliderect(crate.rect):
+                #check if u can push 
+
+
+                #if you cant push move back
+                self.rect.x=old_x
+                self.rect.y=old_y
                 
 
         self.dir_x = 0
         self.dir_y = 0
 
-class Box(pygame.sprite.Sprite):
+class Crate(pygame.sprite.Sprite):
     def __init__(self, x, y):
+        super().__init__()
         self.image = get_sprite("brick.png")
+        self.rect = self.image.get_rect()
         self.x = x
         self.y = y
-    def appear(self):
+
+    def draw(self):
         brick_image = pygame.transform.scale(self.image, (40, 40))
         screen.blit(brick_image,(self.x,self.y))
 
+    def move(self, dir_x, dir_y):
+        self.rect.x += self.dir_x
+        self.rect.y += self.dir_y
 
-class Tile(pygame.sprite.Sprite):
+
+class Wall(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
         self.rect = pygame.Rect(x, y, 60, 60)
         self.image  = pygame.surface.Surface((60, 60))
         self.image.fill(WHITE)
 
-    def draw(self, screen):
-        screen.blit(self.img, self.rect)
+    def draw(self):
+        screen.blit(self.image, self.rect)
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Sokoban")
 
 player = Player(400,400)
-tile = Tile(50,50)
+wall = Wall(50,50)
+crate = Crate(50,50)
 
 player_group = pygame.sprite.Group()
 player_group.add(player)
+
 wall_list = pygame.sprite.Group()
-wall_list.add(tile)
+wall_list.add(wall)
+
+crate_list = pygame.sprite.Group()
+crate_list.add(crate)
 
 gameRunning = True
 isMoving = False
@@ -123,11 +143,14 @@ while gameRunning:
                 elif event.key == pygame.K_DOWN:
                     player.move(0, MOVE_DISTANCE)
         
-    screen.fill(BLACK)
-    player.update(wall_list)
+    screen.fill(BLACK) #Start draw
+
+    player.update(wall_list, crate_list)
     player_group.draw(screen)
     wall_list.draw(screen)
-    pygame.display.flip()
+    crate_list.draw(screen)
+
+    pygame.display.flip() #End draw
     
     if(isMoving):
         pygame.time.delay(100)
