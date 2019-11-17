@@ -15,8 +15,7 @@ SCREEN_HEIGHT = 700
 MOVE_DISTANCE = 50
 
 # Grid block size
-BLOCK_WIDTH = 50
-BLOCK_HEIGHT = 50
+BLOCK_SIZE = 50
 
 def get_sprite(sprite_name):
     image = pygame.image.load("Images/" +sprite_name)
@@ -28,7 +27,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
 
-        self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
+        self.image = pygame.transform.scale(get_sprite("character.png"),(BLOCK_SIZE,BLOCK_SIZE))
 
         # Set the top left position of the location to the x,y coordinate passed in
         self.rect = self.image.get_rect()
@@ -49,9 +48,9 @@ class Player(pygame.sprite.Sprite):
 
     def change_sprite(self):
         if self.dir_x > 0:
-            self.image = pygame.transform.scale(get_sprite("character-right.png"),(60,60))
+            self.image = pygame.transform.scale(get_sprite("character-right.png"),(BLOCK_SIZE,BLOCK_SIZE))
         elif self.dir_x < 0:
-            self.image = pygame.transform.scale(get_sprite("character.png"),(60,60))
+            self.image = pygame.transform.scale(get_sprite("character.png"),(BLOCK_SIZE,BLOCK_SIZE))
 
     def update(self, walls, crates):
         """Used to update the players position"""
@@ -68,12 +67,13 @@ class Player(pygame.sprite.Sprite):
 
         for crate in crates:
             if self.rect.colliderect(crate.rect):
-                #check if u can push 
-
-
+                #check if u can push compared to every crate except itself
+                tempCrateList = list(crates)
+                tempCrateList.remove(crate)
+                if not (crate.move(self.dir_x, self.dir_y, walls, tempCrateList)):
                 #if you cant push move back
-                self.rect.x=old_x
-                self.rect.y=old_y
+                    self.rect.x=old_x
+                    self.rect.y=old_y
                 
 
         self.dir_x = 0
@@ -82,46 +82,76 @@ class Player(pygame.sprite.Sprite):
 class Crate(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.image = get_sprite("brick.png")
+        self.image = pygame.transform.scale(get_sprite("box.png"),(BLOCK_SIZE,BLOCK_SIZE))
         self.rect = self.image.get_rect()
-        self.x = x
-        self.y = y
+        self.rect.x = x
+        self.rect.y = y
 
     def draw(self):
-        brick_image = pygame.transform.scale(self.image, (40, 40))
-        screen.blit(brick_image,(self.x,self.y))
+        screen.blit(self.image,(self.rect.x,self.rect.y))
 
-    def move(self, dir_x, dir_y):
-        self.rect.x += self.dir_x
-        self.rect.y += self.dir_y
+    def move(self, dir_x, dir_y, walls, crates):
+        old_x = self.rect.x
+        old_y = self.rect.y
+        self.rect.x += dir_x
+        self.rect.y += dir_y
+        for wall in walls:
+            if self.rect.colliderect(wall.rect):
+                self.rect.x = old_x
+                self.rect.y = old_y
+                return False
+        for crate in crates:
+            if self.rect.colliderect(crate.rect):
+                self.rect.x = old_x
+                self.rect.y = old_y
+                return False
+                
+        return True
 
 
 class Wall(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.rect = pygame.Rect(x, y, 60, 60)
-        self.image  = pygame.surface.Surface((60, 60))
-        self.image.fill(WHITE)
+        self.image = pygame.transform.scale(get_sprite("brick.png"),(BLOCK_SIZE,BLOCK_SIZE))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
 
     def draw(self):
-        screen.blit(self.image, self.rect)
+        screen.blit(self.image,(self.rect.x,self.rect.y))
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Sokoban")
 
+# MAKE PLAYER
 player = Player(400,400)
-wall = Wall(50,50)
-crate = Crate(50,50)
-
 player_group = pygame.sprite.Group()
 player_group.add(player)
 
+# MAKE WALLS
+createWalls = []
+for x in range(0, SCREEN_WIDTH, BLOCK_SIZE):
+    createWalls.append(Wall(x,0))
+    createWalls.append(Wall(x,SCREEN_HEIGHT - BLOCK_SIZE))
+for y in range(0, SCREEN_HEIGHT, BLOCK_SIZE):
+    createWalls.append(Wall(0,y))
+    createWalls.append(Wall(SCREEN_WIDTH - BLOCK_SIZE, y))
+
 wall_list = pygame.sprite.Group()
-wall_list.add(wall)
+for wall in createWalls:
+    wall_list.add(wall)
+
+# MAKE CRATES
+createCrates = []
+createCrates.append(Crate(100,150))
+createCrates.append(Crate(150,150))
+createCrates.append(Crate(400,150))
+createCrates.append(Crate(700,150))
 
 crate_list = pygame.sprite.Group()
-crate_list.add(crate)
+for crate in createCrates:
+    crate_list.add(crate)
 
 gameRunning = True
 isMoving = False
