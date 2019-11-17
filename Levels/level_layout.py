@@ -1,9 +1,10 @@
-from typing import List, Tuple
+from typing import List
 
 """
-Wall layout for each level. Dimension is 6 by 6 (only considering the inner part
-of the grid. Outermost layer should be walls and this setting is already covered 
-in the different class.
+Level layout for each level. Dimension is 10 by 10.
+Outermost layer should be all walls. 
+Each function will return a nested list consists of different types of objects
+(e.g. wall, box, player, storage, and empty grid).
 """
 
 W = "wall"
@@ -13,7 +14,7 @@ S = "storage"
 E = "empty"
 
 
-def level_one() -> List:
+def level_one() -> List[List[str]]:
     """
     Level layout for level 1.
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -34,7 +35,7 @@ def level_one() -> List:
     return grid
 
 
-def level_two() -> List[Tuple[int]]:
+def level_two() -> List[List[str]]:
     """
     Level layout for level 2
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -55,7 +56,7 @@ def level_two() -> List[Tuple[int]]:
     return grid
 
 
-def level_three() -> List[Tuple[int]]:
+def level_three() -> List[List[str]]:
     """
     Level layout for level 3
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -76,7 +77,7 @@ def level_three() -> List[Tuple[int]]:
     return grid
 
 
-def level_four() -> List[Tuple[int]]:
+def level_four() -> List[List[str]]:
     """
     Level layout for level 4
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -97,7 +98,7 @@ def level_four() -> List[Tuple[int]]:
     return grid
 
 
-def level_five() -> List[Tuple[int]]:
+def level_five() -> List[List[str]]:
     """
     Level layout for level 5
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -118,7 +119,7 @@ def level_five() -> List[Tuple[int]]:
     return grid
 
 
-def level_six() -> List[Tuple[int]]:
+def level_six() -> List[List[str]]:
     """
     Level layout for level 6
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -139,7 +140,7 @@ def level_six() -> List[Tuple[int]]:
     return grid
 
 
-def level_seven() -> List[Tuple[int]]:
+def level_seven() -> List[List[str]]:
     """
     Level layout for level 7
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -160,7 +161,7 @@ def level_seven() -> List[Tuple[int]]:
     return grid
 
 
-def level_eight() -> List[Tuple[int]]:
+def level_eight() -> List[List[str]]:
     """
     Level layout for level 8
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -181,7 +182,7 @@ def level_eight() -> List[Tuple[int]]:
     return grid
 
 
-def level_nine() -> List[Tuple[int]]:
+def level_nine() -> List[List[str]]:
     """
     Level layout for level 9
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
@@ -202,7 +203,7 @@ def level_nine() -> List[Tuple[int]]:
     return grid
 
 
-def level_ten() -> List[Tuple[int]]:
+def level_ten() -> List[List[str]]:
     """
     level layout for level 10
     :return: Nested list consists of WALL, BOX, STORAGE, PLAYER, and EMPTY.
