@@ -105,6 +105,10 @@ class Crate(pygame.sprite.Sprite):
         for storage in storages:
             if self.rect.colliderect(storage.rect):
                 self.stored = True
+                break
+            else:
+                self.stored = False
+
         return True
 
 

@@ -1,85 +1,201 @@
-from level_layout import *
+from typing import List
+
+"""
+Level layout for each level. Dimension is 10 by 10.
+Outermost layer should be all walls. 
+Each function will return a nested list consists of different types of objects
+(e.g. wall, crate, player, storage, and empty grid).
+"""
+
+W = "wall"
+C = "crate"
+P = "player"
+S = "storage"
+E = "empty"
 
 
 class Levels:
     """
-    An abstract class to generate levels using grid system
-    === Public Attributes ===
-    E:
-        An str to represent the grid at that point is empty
-    W:
-        An str to represent the grid at that point is a wall
-    C:
-        An str to represent the grid at that point is a crate
-    S:
-        An str to represent the grid at that point is a storage
-    P:
-        An str to represent the grid at that point is the player
-    level_list:
-        A list that stores all the layout of all levels
-    completed_level:
-        A boolean for whether this level has been completed
     curr_level:
         Current level
+    grid:
+        Current level layout
     """
-    E: str
-    W: str
-    C: str
-    S: str
-    P: str
-    level_list: List[List[List[str]]]
-    completed_level: bool
-    curr_level: str  # Unknown type yet
+    curr_level: int
+    grid: List[List[str]]
 
-    def __init__(self) -> None:
-        """
-        Initialize a grid system for the game and all the variables
-        """
-        self.E, self.W, self.C, self.S, self.P = "", "wall", "crate", \
-                                                 "storage", "player"
-        self.level_list = []
-        for i in range(1, 11):
-            self.level_list.append(globals()['level_' + str(i)]())
+    def __init__(self, curr_level: int = 1) -> None:
+        self.curr_level = curr_level
+        self.grid = []
+        getattr(Levels, "level_"+str(self.curr_level))(self)
 
-    def update_level_status(self):
-        """
-        Check if all the crates are pushed into the storage and update
-        completed_level accordingly. Update current level if level completed.
-        """
-        for i in range(len(self.grid)):
-            for j in range(len(self.grid)):
-                if self.grid[i][j] == self.STORAGE or self.grid[i][j] == \
-                        self.CRATE:
-                    self.completed_level = False
-                    return None
+    def advance(self):
+        if self.curr_level <= 10:
+            self.curr_level += 1
+            self.grid = []
+            getattr(Levels, "level_"+str(self.curr_level))(self)
 
-        self.completed_level = True
-        self.update_curr_level()
+    def level_1(self) -> None:
+        """
+        Level layout for level 1.
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
+        """
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, E, E, E, E, S, S, W])
+        self.grid.append([W, E, E, C, E, E, E, S, S, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, W, W, E, E, W, W, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, C, E, E, E, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
 
-    def is_complete(self):
+    def level_2(self) -> None:
         """
-        :return: the level status (completed or not)
+        Level layout for level 2
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
         """
-        self.update_level_status()
-        return self.completed_level
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, W, E, E, E, S, S, W])
+        self.grid.append([W, E, C, W, E, E, E, W, S, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, W, W, E, E, W, W, W])
+        self.grid.append([W, E, C, E, W, E, E, E, E, W])
+        self.grid.append([W, E, E, E, E, E, W, E, E, W])
+        self.grid.append([W, E, W, E, C, W, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, S, E])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
 
-    def is_game_complete(self):
+    def level_3(self) -> None:
         """
-        Check if all the levels are completed
-        :return: True if all levels are completed, False otherwise
+        Level layout for level 3
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
         """
-        for level in self.level_list:
-            if not level.completed_level:
-                return False
-        return True
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, E, W, W, E, E, S, W])
+        self.grid.append([W, E, C, C, W, W, E, E, S, W])
+        self.grid.append([W, E, C, E, W, E, E, E, E, W])
+        self.grid.append([W, E, E, E, E, E, E, W, E, W])
+        self.grid.append([W, E, C, W, E, W, E, E, E, W])
+        self.grid.append([W, E, E, W, E, W, E, E, E, W])
+        self.grid.append([W, E, E, E, E, W, E, E, E, W])
+        self.grid.append([W, E, W, E, E, W, S, E, S, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
 
-    def update_curr_level(self):
+    def level_4(self) -> None:
         """
-        Update the current level to the next level
+        Level layout for level 4
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
         """
-        if self.is_game_complete():
-            self.curr_level = None
-            return None
-        for level in self.level_list:
-            if not level.is_level_complete():
-                self.curr_level = level
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, S, E, E, S, E, E, E, S, W])
+        self.grid.append([W, E, E, E, S, E, E, E, E, W])
+        self.grid.append([W, E, E, E, E, W, E, E, E, W])
+        self.grid.append([W, E, W, C, C, C, E, E, E, W])
+        self.grid.append([W, E, E, C, P, C, W, E, E, W])
+        self.grid.append([W, E, W, C, C, C, E, E, E, W])
+        self.grid.append([W, E, E, E, E, W, E, E, E, W])
+        self.grid.append([W, S, E, E, S, E, E, E, S, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+
+    def level_5(self) -> None:
+        """
+        Level layout for level 5
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
+        """
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, W, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, E, E, E, C, C, E, W])
+        self.grid.append([W, E, W, E, E, W, W, E, E, W])
+        self.grid.append([W, E, W, E, S, S, W, E, E, W])
+        self.grid.append([W, E, W, S, S, S, W, E, E, W])
+        self.grid.append([W, E, W, W, W, W, W, C, E, W])
+        self.grid.append([W, E, C, E, C, E, E, E, E, W])
+        self.grid.append([W, E, E, E, E, E, E, E, E, E])
+        self.grid.append([W, E, W, W, W, W, W, C, E, W])
+        self.grid.append([W, E, C, E, C, E, E, E, E, W])
+        self.grid.append([W, E, E, E, E, E, E, E, E, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+
+    def level_6(self) -> None:
+        """
+        Level layout for level 6
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
+        """
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, E, E, W, E, S, S, W])
+        self.grid.append([W, E, E, C, E, W, E, S, S, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, W, W, E, E, W, W, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, C, E, E, E, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+
+    def level_7(self) -> None:
+        """
+        Level layout for level 7
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
+        """
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, E, E, W, E, S, S, W])
+        self.grid.append([W, E, E, C, E, W, E, S, S, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, W, W, E, E, W, W, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, C, E, E, E, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+
+    def level_8(self) -> None:
+        """
+        Level layout for level 8
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
+        """
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, E, E, W, E, S, S, W])
+        self.grid.append([W, E, E, C, E, W, E, S, S, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, W, W, E, E, W, W, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, C, E, E, E, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+
+    def level_9(self) -> None:
+        """
+        Level layout for level 9
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
+        """
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, E, E, W, E, S, S, W])
+        self.grid.append([W, E, E, C, E, W, E, S, S, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, W, W, E, E, W, W, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, C, E, E, E, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+
+    def level_10(self) -> None:
+        """
+        level layout for level 10
+        :return: Nested list consists of WALL, CRATE, STORAGE, PLAYER, and EMPTY.
+        """
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+        self.grid.append([W, P, E, E, E, W, E, S, S, W])
+        self.grid.append([W, E, E, C, E, W, E, S, S, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, W, W, W, E, E, W, W, W])
+        self.grid.append([W, E, C, E, E, E, E, E, E, W])
+        self.grid.append([W, E, C, E, E, E, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, E, E, E, E, W, W, E, E, W])
+        self.grid.append([W, W, W, W, W, W, W, W, W, W])
+
+
