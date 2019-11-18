@@ -77,8 +77,8 @@ class Sokoban:
             Sokoban.crate_list.draw(screen)
 
             if all([crate.stored for crate in Sokoban.crate_list]):
-                level.advance()
-                self.set_game_object(level)
+                levels.advance()
+                self.set_game_object(levels)
 
             pygame.display.flip()  # End draw
 
