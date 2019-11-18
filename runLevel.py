@@ -176,6 +176,8 @@ def main_level():
                         player.move(0, -MOVE_DISTANCE)
                     elif event.key == pygame.K_DOWN:
                         player.move(0, MOVE_DISTANCE)
+                    elif event.key -- pygame.K_SPACE:
+                        main_level();
 
         screen.fill(BLACK) #Start draw
 
