@@ -44,13 +44,13 @@ def level_2() -> List[List[str]]:
 
     grid.append([W, W, W, W, W, W, W, W, W, W])
     grid.append([W, P, E, W, E, E, E, S, S, W])
-    grid.append([W, E, C, W, E, E, E, W, S, W])
-    grid.append([W, E, C, E, E, E, E, E, E, W])
-    grid.append([W, E, W, W, W, E, E, W, W, W])
-    grid.append([W, E, C, E, W, E, E, E, E, W])
-    grid.append([W, E, E, E, E, E, W, E, E, W])
-    grid.append([W, E, W, E, C, W, W, E, E, W])
-    grid.append([W, E, E, E, E, W, W, E, S, E])
+    grid.append([W, E, C, W, E, E, E, E, S, W])
+    grid.append([W, E, C, E, E, E, W, E, E, W])
+    grid.append([W, E, W, W, E, E, E, W, E, W])
+    grid.append([W, E, E, E, W, E, E, E, E, W])
+    grid.append([W, E, C, E, E, E, W, E, E, W])
+    grid.append([W, E, W, E, C, E, W, E, E, W])
+    grid.append([W, E, E, E, E, W, W, E, S, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
