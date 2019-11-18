@@ -29,7 +29,7 @@ def level_1() -> List[List[str]]:
     grid.append([W, E, C, E, E, E, E, E, E, W])
     grid.append([W, E, C, E, E, E, W, E, E, W])
     grid.append([W, E, E, E, E, W, W, E, E, W])
-    grid.append([W, E, E, E, E, W, W, E, E, E])
+    grid.append([W, E, E, E, E, W, W, E, E, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -71,7 +71,7 @@ def level_3() -> List[List[str]]:
     grid.append([W, E, C, W, E, W, E, E, E, W])
     grid.append([W, E, E, W, E, W, E, E, E, W])
     grid.append([W, E, E, E, E, W, E, E, E, W])
-    grid.append([W, E, W, E, E, W, S, E, S, E])
+    grid.append([W, E, W, E, E, W, S, E, S, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -92,7 +92,7 @@ def level_4() -> List[List[str]]:
     grid.append([W, E, E, C, P, C, W, E, E, W])
     grid.append([W, E, W, C, C, C, E, E, E, W])
     grid.append([W, E, E, E, E, W, E, E, E, W])
-    grid.append([W, S, E, E, S, E, E, E, S, E])
+    grid.append([W, S, E, E, S, E, E, E, S, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -111,9 +111,15 @@ def level_5() -> List[List[str]]:
     grid.append([W, E, W, E, E, W, W, E, E, W])
     grid.append([W, E, W, E, S, S, W, E, E, W])
     grid.append([W, E, W, S, S, S, W, E, E, W])
+<<<<<<< HEAD:level_layout.py
     grid.append([W, E, W, W, W, W, W, C, E, W])
     grid.append([W, E, C, E, C, E, E, E, E, W])
     grid.append([W, E, E, E, E, E, E, E, E, E])
+=======
+    grid.append([W, E, W, W, W, W, W, B, E, W])
+    grid.append([W, E, B, E, B, E, E, E, E, W])
+    grid.append([W, E, E, E, E, E, E, E, E, W])
+>>>>>>> 0783aa32909d46dfde63df495c0ba72890f89822:Levels/level_layout.py
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -134,7 +140,7 @@ def level_6() -> List[List[str]]:
     grid.append([W, E, C, E, E, E, E, E, E, W])
     grid.append([W, E, C, E, E, E, W, E, E, W])
     grid.append([W, E, E, E, E, W, W, E, E, W])
-    grid.append([W, E, E, E, E, W, W, E, E, E])
+    grid.append([W, E, E, E, E, W, W, E, E, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -155,7 +161,7 @@ def level_7() -> List[List[str]]:
     grid.append([W, E, C, E, E, E, E, E, E, W])
     grid.append([W, E, C, E, E, E, W, E, E, W])
     grid.append([W, E, E, E, E, W, W, E, E, W])
-    grid.append([W, E, E, E, E, W, W, E, E, E])
+    grid.append([W, E, E, E, E, W, W, E, E, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -176,7 +182,7 @@ def level_8() -> List[List[str]]:
     grid.append([W, E, C, E, E, E, E, E, E, W])
     grid.append([W, E, C, E, E, E, W, E, E, W])
     grid.append([W, E, E, E, E, W, W, E, E, W])
-    grid.append([W, E, E, E, E, W, W, E, E, E])
+    grid.append([W, E, E, E, E, W, W, E, E, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -197,7 +203,7 @@ def level_9() -> List[List[str]]:
     grid.append([W, E, C, E, E, E, E, E, E, W])
     grid.append([W, E, C, E, E, E, W, E, E, W])
     grid.append([W, E, E, E, E, W, W, E, E, W])
-    grid.append([W, E, E, E, E, W, W, E, E, E])
+    grid.append([W, E, E, E, E, W, W, E, E, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
@@ -218,7 +224,7 @@ def level_10() -> List[List[str]]:
     grid.append([W, E, C, E, E, E, E, E, E, W])
     grid.append([W, E, C, E, E, E, W, E, E, W])
     grid.append([W, E, E, E, E, W, W, E, E, W])
-    grid.append([W, E, E, E, E, W, W, E, E, E])
+    grid.append([W, E, E, E, E, W, W, E, E, W])
     grid.append([W, W, W, W, W, W, W, W, W, W])
 
     return grid
