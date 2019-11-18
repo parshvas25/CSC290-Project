@@ -67,7 +67,7 @@ class Sokoban:
                         elif event.key == pygame.K_SPACE:
                             self.set_game_object(levels)
 
-            screen.fill((211,211,211))
+            screen.fill((192,192,192))
             Sokoban.player.update(Sokoban.wall_list, Sokoban.crate_list, Sokoban.storage_list)
 
             Sokoban.storage_list.draw(screen)
