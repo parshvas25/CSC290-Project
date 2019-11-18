@@ -1,6 +1,6 @@
 import pygame
 from pygame import *
-
+from runLevel import main_level
 
 # Global constants
 
@@ -117,7 +117,7 @@ def main():
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    run_game()
+                    main_level()
 
         pygame.display.update()
 

@@ -27,7 +27,7 @@ def get_sprite(sprite_name):
     image = pygame.image.load("Images/" +sprite_name)
     return image
 
-def main():
+def main_level():
     class Player(pygame.sprite.Sprite):
         def __init__(self, x, y):
             super().__init__()
@@ -191,4 +191,4 @@ def main():
             isMoving = False
 
 if __name__ == "__main__":
-    main()
+    main_level()
