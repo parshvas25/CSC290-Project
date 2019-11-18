@@ -9,8 +9,8 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 # Screen dimensions
-SCREEN_WIDTH = 1000
-SCREEN_HEIGHT = 700
+SCREEN_WIDTH = 500
+SCREEN_HEIGHT = 500
 MOVE_DISTANCE = 50
 
 
@@ -67,7 +67,7 @@ class Sokoban:
                         elif event.key == pygame.K_SPACE:
                             self.set_game_object(levels)
 
-            screen.fill(BLACK)
+            screen.fill((211,211,211))
             Sokoban.player.update(Sokoban.wall_list, Sokoban.crate_list, Sokoban.storage_list)
 
             Sokoban.storage_list.draw(screen)
