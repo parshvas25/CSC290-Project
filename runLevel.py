@@ -1,6 +1,5 @@
 import pygame
 from pygame import *
-import numpy as np
 
 # Global constants
 
@@ -78,7 +77,7 @@ def main():
                     #if you cant push move back
                         self.rect.x=old_x
                         self.rect.y=old_y
-                    
+
 
             self.dir_x = 0
             self.dir_y = 0
@@ -109,7 +108,7 @@ def main():
                     self.rect.x = old_x
                     self.rect.y = old_y
                     return False
-                    
+
             return True
 
 
@@ -177,7 +176,7 @@ def main():
                         player.move(0, -MOVE_DISTANCE)
                     elif event.key == pygame.K_DOWN:
                         player.move(0, MOVE_DISTANCE)
-            
+
         screen.fill(BLACK) #Start draw
 
         player.update(wall_list, crate_list)
@@ -186,7 +185,7 @@ def main():
         crate_list.draw(screen)
 
         pygame.display.flip() #End draw
-        
+
         if(isMoving):
             pygame.time.delay(100)
             isMoving = False
