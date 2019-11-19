@@ -1,8 +1,10 @@
 
 import pygame
 from pygame import*
-from play import Sokoban
+import os
 
+cur_path = os.path.dirname(__file__)
+new_path = os.path.relpath('..\\Resources', cur_path)
 #Import Forque Font
 
 def game_font(text:str, font:str, size:int, textColor:tuple):
@@ -11,7 +13,8 @@ def game_font(text:str, font:str, size:int, textColor:tuple):
 
 
 def main():
-    forque = "menu/Forque.ttf"
+    
+    forque = new_path + "\Forque.ttf"
     SCREEN_WIDTH = 500
     SCREEN_HEIGHT = 500
     pygame.init()
@@ -23,7 +26,7 @@ def main():
 
     color_dict = {"black": (0,0,0), "yellow": (255,255,0), "green": (0,255,0)}
 
-    background_image = pygame.image.load("menu/background.jpg") 
+    background_image = pygame.image.load(new_path + "\\" + "background.jpg") 
     bg = pygame.transform.scale(background_image, (SCREEN_WIDTH,SCREEN_HEIGHT))
 
 
@@ -40,9 +43,6 @@ def main():
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    sokoban = Sokoban()
-                    sokoban.play()
+                    return True
 
         pygame.display.update()
-
-main()

@@ -1,7 +1,8 @@
 import level
 from level import *
 from game_objects import *
-
+import main_menu
+from main_menu import *
 # Global constants
 
 # Colors
@@ -38,6 +39,7 @@ class Sokoban:
                     Sokoban.player_group.add(Sokoban.player)
 
     def play(self, curr_level: int = 1) -> None:
+        main_menu.main()
         pygame.init()
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("Sokoban")

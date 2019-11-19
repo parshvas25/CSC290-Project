@@ -1,5 +1,7 @@
 import pygame
 from pygame import *
+import os
+
 
 # Global constants
 
@@ -15,7 +17,9 @@ BLOCK_SIZE = 50
 
 
 def get_sprite(sprite_name):
-    image = pygame.image.load("Images/" + sprite_name)
+    cur_path = os.path.dirname(__file__)
+    new_path = os.path.relpath('..\\Resources', cur_path)
+    image = pygame.image.load(new_path + "\\" + sprite_name)
     return image
 
 
