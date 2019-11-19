@@ -14,7 +14,7 @@ def game_font(text:str, font:str, size:int, textColor:tuple):
 
 def main():
     
-    forque = new_path + "\Forque.ttf"
+    forque = new_path + "\Fonts\Forque.ttf"
     SCREEN_WIDTH = 500
     SCREEN_HEIGHT = 500
     pygame.init()
@@ -26,7 +26,7 @@ def main():
 
     color_dict = {"black": (0,0,0), "yellow": (255,255,0), "green": (0,255,0)}
 
-    background_image = pygame.image.load(new_path + "\\" + "background.jpg") 
+    background_image = pygame.image.load(new_path + "\Images\\background.jpg") 
     bg = pygame.transform.scale(background_image, (SCREEN_WIDTH,SCREEN_HEIGHT))
 
 
