@@ -59,38 +59,43 @@ The project is split into two main folders
    - Contains the game objects, the menus, the levels, and the main application to run the game, Sokoban.py
 
 ### Class and Method Structure:
-``` main_menu.py: ```
+| Files | Classes | Methods |
+| --- | --- | --- |
+| sokoban.py | class Sokoban | set_game_object(self, levels)<br />play(self, curr_level) |
+| game_object.py | class Player<br />class Crate<br />class Wall<br />class Storage|change_sprite(self)<br />update(walls, crates, storages)<br />move(self, x, y)<br />draw(self, screen) |
+| level.py | class Levels | set_level(self, start_level)<br />advance(self)<br />level_n(self) |
+| main_menu.py | class Button | on_click(self, event)<br />get_level(self)<br />draw(self, screen)<br />|
 
-class Button for level selector
-
-* on_click(self, event): Checks pygame rectangle collision with the rectangle boundaries and the mouse position to determine what level was selected
-
-``` game_objects.py: ```
-Contains all game objects (wall, player, crate, storage) class: 
-move(self, dir_x, dir_y, walls, crates, storages): Check for object collisions and move each object correspondingly. 
-draw(self, screen): Drawing functionality to display sprites 
-
-``` level.py: ```
-Reads a level layout to make the grid for the current level
-Contains every level the user can play
-
-``` sokoban.py: ```
-Responsible for generating the game and all the visuals 
-The main application of the project
 
 ### Main Methods:
-Sokoban.py - play(self, curr_level): 
-Is where the main game is ran, initializing the pygame variables and settings
-Takes in user input, such as the arrow key controls to move
-Updates the screen accordingly to the current state the level is on
-Allows the user to advance to the next level
+```Sokoban.py ```
+#### play(self, curr_level):
+* Is where the main game is ran, initializing the pygame variables and settings
+* Takes in user input, such as the arrow key controls to move
+* Updates the screen accordingly to the current state the level is on
+* Allows the user to advance to the next level
 
-Main-menu.py - main():
-Creates the main menu where the user can select a level to play
 
-Level.py - advance(self):
-Allows the game to advance to the next level from 1 to 10
-Resets the grid and then calls the next level in line
+``` game_objects.py: ```
+* Contains all game objects (wall, player, crate, storage) class: 
+#### move(self, dir_x, dir_y, walls, crates, storages): 
+* Check for object collisions and move each object correspondingly. 
+#### draw(self, screen): 
+* Drawing functionality to display sprites 
+
+``` level.py: ```
+* Reads a level layout to make the grid for the current level
+* Contains every level the user can play
+
+#### advance(self):
+* Allows the game to advance to the next level from 1 to 10
+* Resets the grid and then calls the next level in line
+
+``` main_menu.py: ```
+* Creates the main menu where the user can select a level to play
+
+#### on_click(self, event): 
+* Checks pygame rectangle collision with the rectangle boundaries and the mouse position to determine what level was selected
 
 ## Contributing
 Everyone is welcome to make edits and customize the game. If you want everyone to enjoy any edits you made, feel free to make a pull request!
@@ -102,7 +107,10 @@ Some challenges that may interest you:
 * Level Creator: Create your own levels!
 
 ## Our Contributions
-Ajay: 
+Ajay: My contributions to the project included writing the logic for the game objects; Player, Crate, and Wall. I also wrote the template for the Pygame application to run, and the ability for Pygame to accept input and translate that into player movement. As for the main menu, I created the ability to select any of the available levels to play, starting and continuing from the level selected.
+
+My contributions to the readme include creating the template for the overall document, and translating the document into the md format for the readme. I wrote the Game features and Contributing sections alone. I also contributed to the Installation and Documentation sections. For the installation, I wrote the Windows guide to installing the game. As for the documentation, I wrote the Repository Structure, and contributed to Main methods.
+
 
 
 Bingbing:
