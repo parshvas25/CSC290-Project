@@ -3,11 +3,11 @@ from level import *
 from game_objects import *
 import main_menu
 from main_menu import *
+
 # Global constants
 
 # Colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+GAME_BACKGROUND = (192,192,192)
 
 # Screen dimensions
 SCREEN_WIDTH = 500
@@ -38,8 +38,7 @@ class Sokoban:
                     Sokoban.player = Player(i * 50, j * 50)
                     Sokoban.player_group.add(Sokoban.player)
 
-    def play(self, curr_level: int = 1) -> None:
-        main_menu.main()
+    def play(self, curr_level):
         pygame.init()
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("Sokoban")
@@ -69,7 +68,7 @@ class Sokoban:
                         elif event.key == pygame.K_SPACE:
                             self.set_game_object(levels)
 
-            screen.fill((192,192,192))
+            screen.fill(GAME_BACKGROUND)
             Sokoban.player.update(Sokoban.wall_list, Sokoban.crate_list, Sokoban.storage_list)
 
             Sokoban.storage_list.draw(screen)
@@ -91,4 +90,6 @@ class Sokoban:
 
 if __name__ == '__main__':
     sokoban = Sokoban()
-    sokoban.play()
+
+    startLevel = main_menu.main()
+    sokoban.play(startLevel)
