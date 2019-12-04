@@ -27,21 +27,24 @@ class Sokoban:
         layout = levels.grid
 
         for i in range(len(layout)):
-            for j in range(len(layout)):
-                if layout[j][i] == level.W:
-                    Sokoban.wall_list.add(Wall(i * 50, j * 50))
-                elif layout[j][i] == level.C:
-                    Sokoban.crate_list.add(Crate(i * 50, j * 50))
-                elif layout[j][i] == level.S:
-                    Sokoban.storage_list.add(Storage(i * 50, j * 50))
-                elif layout[j][i] == level.P:
-                    Sokoban.player = Player(i * 50, j * 50)
+            for j in range(len(layout[i])):
+                if layout[i][j] == level.W:
+                    Sokoban.wall_list.add(Wall(j * 50, i * 50))
+                elif layout[i][j] == level.C:
+                    Sokoban.crate_list.add(Crate(j * 50, i * 50))
+                elif layout[i][j] == level.S:
+                    Sokoban.storage_list.add(Storage(j * 50, i * 50))
+                elif layout[i][j] == level.P:
+                    Sokoban.player = Player(j * 50, i * 50)
                     Sokoban.player_group.add(Sokoban.player)
 
     def play(self, curr_level):
         pygame.init()
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("Sokoban")
+
+        if curr_level is None:
+            return
 
         levels = Levels(curr_level)
         self.set_game_object(levels)
@@ -67,6 +70,10 @@ class Sokoban:
                             Sokoban.player.move(0, MOVE_DISTANCE)
                         elif event.key == pygame.K_SPACE:
                             self.set_game_object(levels)
+                        elif event.key == pygame.K_ESCAPE:
+                            curr_level = main_menu.main()
+                            self.play(curr_level)
+                            return
 
             screen.fill(GAME_BACKGROUND)
             Sokoban.player.update(Sokoban.wall_list, Sokoban.crate_list, Sokoban.storage_list)
@@ -91,5 +98,5 @@ class Sokoban:
 if __name__ == '__main__':
     sokoban = Sokoban()
 
-    startLevel = main_menu.main()
-    sokoban.play(startLevel)
+    start_level = main_menu.main()
+    sokoban.play(start_level)
