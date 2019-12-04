@@ -113,7 +113,7 @@ My contributions to the readme include creating the template for the overall doc
 
 
 
-Bingbing:
+Bingbing: My contributions to the project includes organizing and combining team members' code. I organized the classes Player, Crate, Wall, and Storage into one file, game_object.py. Level advancement and layout into the file level.py. I combined the game mechanics together (menu, levels, and player movement) into sokoban.py so we have a fully functional game. My contributions to the README indcludes creating the rough outline. I added the informations in How To Play, Documentation, and the list in Contributing.
 
 
 Parshva:
