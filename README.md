@@ -1,2 +1,119 @@
-Repository containing the CSC290 Final Project
+# Sokoban
+A classic arcade game built using Python and Pygame
+
+## Getting started
+The instructions listed will help you get a copy of the game running on your local machine.
+
+### Prerequisites
+Before starting, you require Python version 3.0 or later. Available here https://www.python.org/downloads/
+Along with Python you need Pygame. To download, follow https://www.pygame.org/wiki/GettingStarted
+### For ```Windows```
+Pygame can easily be installed through command line using either
+```
+pip install pygame
+py -m pip install -U pygame --user
+```
+
+## Installation
+Git clone or download the zip file of the project repository: CSC290-Project 
+
+Link: https://github.com/parshvas25/CSC290-Project.git
+
+### For ```Windows```
+
+If the download was saved to the default Downloads folder
+Open up the command prompt through Windows search 
+Go into the file where the project is located by using 
+-cd Downloads\CSC290-Project\Sokoban
+Run the sokoban.py file by either double clicking on it or through command line:
+-python sokoban.py
+
+## Game Features
+* Level selector to play any available level
+* Few levels with varying difficulty
+* Custom player character sprite
+
+## How to Play
+### Controls: 
+| Command | Result |
+| --- | --- |
+| Arrows keys | Movement |
+| Space bar | Reset level |
+| Escape key | Return to main menu |
+### Gameplay:
+* Select any level in the main menu to start
+* Player must move into the crate to push it, if nothing blocks it 
+* Move all crates into the storage to complete the level
+* Advance and complete all levels
+		
+## Documentation
+### Repository Structure: 
+The project is split into two main folders
+
+1. Resources
+   - The game resources folder contains the fonts, sprites, and sound that the game uses to function. 
+   - The main program relies on this folder for the visuals and sounds that the user will hear and see
+   
+2. Sokoban
+   - The Sokoban folder contains the game mechanics and all the logic for the program to function. 
+   - Contains the game objects, the menus, the levels, and the main application to run the game, Sokoban.py
+
+### Class and Method Structure:
+``` main_menu.py: ```
+
+class Button for level selector
+
+* on_click(self, event): Checks pygame rectangle collision with the rectangle boundaries and the mouse position to determine what level was selected
+
+``` game_objects.py: ```
+Contains all game objects (wall, player, crate, storage) class: 
+move(self, dir_x, dir_y, walls, crates, storages): Check for object collisions and move each object correspondingly. 
+draw(self, screen): Drawing functionality to display sprites 
+
+``` level.py: ```
+Reads a level layout to make the grid for the current level
+Contains every level the user can play
+
+``` sokoban.py: ```
+Responsible for generating the game and all the visuals 
+The main application of the project
+
+### Main Methods:
+Sokoban.py - play(self, curr_level): 
+Is where the main game is ran, initializing the pygame variables and settings
+Takes in user input, such as the arrow key controls to move
+Updates the screen accordingly to the current state the level is on
+Allows the user to advance to the next level
+
+Main-menu.py - main():
+Creates the main menu where the user can select a level to play
+
+Level.py - advance(self):
+Allows the game to advance to the next level from 1 to 10
+Resets the grid and then calls the next level in line
+
+## Contributing
+Everyone is welcome to make edits and customize the game. If you want everyone to enjoy any edits you made, feel free to make a pull request!
+
+Some challenges that may interest you:
+* Leaderboard: Compare times for clearing levels!
+* Challenges: Time and move limits
+* More Levels: Currently, there are only 5 levels in the game.
+* Level Creator: Create your own levels!
+
+## Our Contributions
+Ajay: 
+
+
+Bingbing:
+
+
+Parshva:
+
+
+Shion:
+
+
+Kester:
+
 
