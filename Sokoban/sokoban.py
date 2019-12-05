@@ -85,6 +85,7 @@ class Sokoban:
                             move_sound.play()
                         elif event.key == pygame.K_SPACE:
                             self.set_game_object(levels)
+                            restart_level.play()
                         elif event.key == pygame.K_ESCAPE:
                             curr_level = main_menu.main()
                             self.play(curr_level)
