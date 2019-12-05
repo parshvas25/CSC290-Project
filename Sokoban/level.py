@@ -29,6 +29,10 @@ class Levels:
         self.grid = []
         getattr(Levels, "level_"+str(self.curr_level))(self)
 
+    def set_level(self, start_level):
+        self.curr_level = start_level-1
+        self.advance()
+
     def advance(self):
         if self.curr_level <= 10:
             self.curr_level += 1
