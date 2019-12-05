@@ -156,7 +156,13 @@ My contributions to the project includes organizing and combining team members' 
 Parshva:
 
 
-Shion:
+#### Shion:
+My main contribution to the project was layout design for each level. I 
+organized the layout of wall, crate, storage and player, and stored all the arrangement
+information into the nested lists. My role in creating README was to read over the 
+document multiple times to fix any minor error and confusion. Also, I modified the 
+"how to install" section to clarify some terminology for people who don't have CS
+background.
 
 
 #### Kester:
