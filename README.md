@@ -153,7 +153,11 @@ My contributions to the readme include creating the template for the overall doc
 My contributions to the project includes organizing and combining team members' code. I organized the classes Player, Crate, Wall, and Storage into one file, game_object.py. Level advancement and layout into the file level.py. I combined the game mechanics together (menu, levels, and player movement) into sokoban.py so we have a fully functional game. My contributions to the README includes creating the rough outline. I added the information in How To Play, Documentation, and the list of ways to contribute in Contributing.
 
 
-Parshva:
+#### Parshva:
+For this project my role was to create the menu and level select page of the game. For this my role was to create an appealing menu page that any user will see when first opening the application. To do this I browsed through various fonts and backgrounds that would make the title stand out as well. When beginning the project, I was also responsible for creating a sample level which we then built all the levels of the game.
+
+	As per the Readme, my contributions consisted of adding the installation instructions on Mac, as well as making grammatical checks to ensure the documents contains as few grammatical and spelling errors as possible.
+
 
 
 #### Shion:
