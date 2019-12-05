@@ -26,17 +26,41 @@ Link: https://github.com/parshvas25/CSC290-Project.git
 
 ### For ```Windows```
 
-If the download was saved to the default Downloads folder
+If the download was saved to the default Downloads folder...
+
+#### Option 1
+
+Open up the folder in file explorer under
+
+```Downloads\CSC290-Project\Sokoban```
+
+Double click on it to run the game
+
+#### Option 2
 
 Open up the command prompt through Windows search 
 
 Go into the file where the project is located by using 
 
-```-cd Downloads\CSC290-Project\Sokoban```
+```cd Downloads\CSC290-Project\Sokoban```
+
+Run the sokoban.py file through the command line:
+
+```python sokoban.py```
+
+### For ```Linux```
+
+If the download was saved to the default Downloads folder
+
+Open up the terminal 
+
+Go into the file where the project is located by using 
+
+```cd Downloads/CSC290-Project/Sokoban```
 
 Run the sokoban.py file by either double clicking on it or through command line:
 
-```-python sokoban.py```
+```python sokoban.py```
 
 ## Game Features
 * Level selector to play any available level
@@ -108,7 +132,7 @@ The project is split into two main folders
   * Checks pygame rectangle collision with the rectangle boundaries and the mouse position to determine what level was selected
 
 ## Contributing
-Everyone is welcome to make edits and customize the game. If you want everyone to enjoy any edits you made, feel free to make a pull request!
+Everyone is welcome to make edits and customize the game to your liking. If you want everyone to enjoy any edits you made, feel free to make a pull request!
 
 Some challenges that may interest you:
 * Leaderboard: Compare times for clearing levels!
@@ -120,11 +144,11 @@ Some challenges that may interest you:
 #### Ajay: 
 My contributions to the project included writing the logic for the game objects; Player, Crate, and Wall. I also wrote the template for the Pygame application to run, and the ability for Pygame to accept input and translate that into player movement. As for the main menu, I created the ability to select any of the available levels to play, starting and continuing from the level selected.
 
-My contributions to the readme include creating the template for the overall document, and translating the document into the md format for the readme. I wrote the Game features and Contributing sections alone. I also contributed to the Installation and Documentation sections. For the installation, I wrote the Windows guide to installing the game. As for the documentation, I wrote the Repository Structure, and contributed to Main methods.
+My contributions to the readme include creating the template for the overall document, and translating the document into the md format for the readme. I wrote the Game features and Contributing sections alone. I also contributed to the Installation and Documentation sections. For the installation, I wrote the Windows guide to installing the game. As for the documentation, I wrote the Repository Structure, and contributed to Main methods. Finally, I looked over the document to ensure that all information was correct and in a readable format.
 
 
 #### Bingbing: 
-My contributions to the project includes organizing and combining team members' code. I organized the classes Player, Crate, Wall, and Storage into one file, game_object.py. Level advancement and layout into the file level.py. I combined the game mechanics together (menu, levels, and player movement) into sokoban.py so we have a fully functional game. My contributions to the README indcludes creating the rough outline. I added the informations in How To Play, Documentation, and the list in Contributing.
+My contributions to the project includes organizing and combining team members' code. I organized the classes Player, Crate, Wall, and Storage into one file, game_object.py. Level advancement and layout into the file level.py. I combined the game mechanics together (menu, levels, and player movement) into sokoban.py so we have a fully functional game. My contributions to the README includes creating the rough outline. I added the information in How To Play, Documentation, and the list of ways to contribute in Contributing.
 
 
 Parshva:
@@ -135,7 +159,7 @@ Shion:
 
 Kester:
 
-## Our Contributions
+## License
 
 Built under MIT License
 
