@@ -69,6 +69,8 @@ Run the sokoban.py file by either double clicking on it or through command line:
 
 ## How to Play
 ### Controls: 
+![Controls - Visual](https://github.com/kchiem198/random_resources/blob/master/controls.png)
+
 | Command | Result |
 | --- | --- |
 | Arrows keys | Movement |
@@ -157,7 +159,10 @@ Parshva:
 Shion:
 
 
-Kester:
+#### Kester:
+My contributions to the project encompassed anything related to sound: finding background music and sound effects, as well as writing code for the sound and music during the gameplay.
+For this Readme file, I made visuals placed throughout the file (for example, the controls image) as well as proofread and fix any grammatical or flow errors in the text.
+
 
 ## License
 
