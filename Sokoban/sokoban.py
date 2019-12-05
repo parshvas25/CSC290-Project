@@ -1,8 +1,10 @@
 import level
-from level import *
-from game_objects import *
 import main_menu
+import os
+from game_objects import *
+from level import *
 from main_menu import *
+
 # Global constants
 
 # Colors
@@ -47,6 +49,16 @@ class Sokoban:
         levels = Levels(curr_level)
         self.set_game_object(levels)
 
+        cur_path = os.path.dirname(__file__)
+        new_path = os.path.relpath('..\\Resources\\Sounds', cur_path)
+        pygame.mixer.init()
+        pygame.mixer.music.load(new_path + "\\" + 'map_move.mp3')
+        pygame.mixer.music.play(-1)
+
+        move_sound = pygame.mixer.Sound(new_path + "\\" + 'walk_sound.wav')
+        restart_level = pygame.mixer.Sound(
+            new_path + "\\" + 'Electronic_Chime-495939803.wav')
+
         game_running = True
         is_moving = False
         clock = pygame.time.Clock()
@@ -60,17 +72,23 @@ class Sokoban:
                         is_moving = True
                         if event.key == pygame.K_LEFT:
                             Sokoban.player.move(-MOVE_DISTANCE, 0)
+                            move_sound.play()
                         elif event.key == pygame.K_RIGHT:
                             Sokoban.player.move(MOVE_DISTANCE, 0)
+                            move_sound.play()
                         elif event.key == pygame.K_UP:
                             Sokoban.player.move(0, -MOVE_DISTANCE)
+                            move_sound.play()
                         elif event.key == pygame.K_DOWN:
                             Sokoban.player.move(0, MOVE_DISTANCE)
+                            move_sound.play()
                         elif event.key == pygame.K_SPACE:
                             self.set_game_object(levels)
+                            restart_level.play()
 
-            screen.fill((192,192,192))
-            Sokoban.player.update(Sokoban.wall_list, Sokoban.crate_list, Sokoban.storage_list)
+            screen.fill((192, 192, 192))
+            Sokoban.player.update(Sokoban.wall_list, Sokoban.crate_list,
+                                  Sokoban.storage_list)
 
             Sokoban.storage_list.draw(screen)
 
