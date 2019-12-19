@@ -11,7 +11,7 @@ GREEN = (0,255,0)
 
 
 cur_path = os.path.dirname(__file__)
-new_path = os.path.relpath('..\\Resources', cur_path)
+new_path = os.path.relpath('../Resources', cur_path)
 #Import Forque Font
 
 def game_font(text:str, font:str, size:int, textColor:tuple):
@@ -38,18 +38,18 @@ class Button:
 
 def main():
 
-    forque = new_path + "\Fonts\Forque.ttf"
+    forque = new_path + "/Fonts/Forque.ttf"
     SCREEN_WIDTH = 500
     SCREEN_HEIGHT = 500
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
     pygame.display.set_caption("Sokoban")
 
-    background_image = pygame.image.load(new_path + "\Images\\background.jpg")
+
+    background_image = pygame.image.load(new_path + "/Images/background.jpg")
     bg = pygame.transform.scale(background_image, (SCREEN_WIDTH,SCREEN_HEIGHT))
 
-    screen.blit(bg, (0,0))
-
+    
     button_group = []
     for i in range(50,450, 80):
         temp_button = Button((i,350, 50, 50), (i-50)//80 + 1)

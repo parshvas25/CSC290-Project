@@ -51,14 +51,14 @@ class Sokoban:
         self.set_game_object(levels)
 
         cur_path = os.path.dirname(__file__)
-        new_path = os.path.relpath('..\\Resources\\Sounds', cur_path)
+        new_path = os.path.relpath('../Resources/Sounds', cur_path)
         pygame.mixer.init()
-        pygame.mixer.music.load(new_path + "\\" + 'map_move.mp3')
+        pygame.mixer.music.load(new_path + "/" + 'map_move.mp3')
         pygame.mixer.music.play(-1)
 
-        move_sound = pygame.mixer.Sound(new_path + "\\" + 'walk_sound.wav')
+        move_sound = pygame.mixer.Sound(new_path + "/" + 'walk_sound.wav')
         restart_level = pygame.mixer.Sound(
-            new_path + "\\" + 'Electronic_Chime-495939803.wav')
+            new_path + "/" + 'Electronic_Chime-495939803.wav')
 
         game_running = True
         is_moving = False
